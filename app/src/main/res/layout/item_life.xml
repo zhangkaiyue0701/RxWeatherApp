@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@color/cardViewBg"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardViewBg"
+        >
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_life_title"
+            style="@style/CustomNowWeatherTitleTextAppearance"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:background="#d02f4b"
+            android:drawableLeft="@mipmap/life"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="@string/life_condition" />
+
+        <com.zhangkaiyue.rxweatherapp.weather.ui.StarItem
+            android:id="@+id/comfortable_item"
+            android:layout_below="@id/tv_life_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.zhangkaiyue.rxweatherapp.weather.ui.StarItem
+            android:id="@+id/clothes_item"
+            android:layout_below="@id/comfortable_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.zhangkaiyue.rxweatherapp.weather.ui.StarItem
+            android:id="@+id/sport_item"
+            android:layout_below="@id/clothes_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.zhangkaiyue.rxweatherapp.weather.ui.StarItem
+            android:id="@+id/travel_item"
+            android:layout_below="@id/sport_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.zhangkaiyue.rxweatherapp.weather.ui.StarItem
+            android:id="@+id/wash_car_item"
+            android:layout_below="@id/travel_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.zhangkaiyue.rxweatherapp.weather.ui.StarItem
+            android:id="@+id/skin_item"
+            android:layout_below="@id/wash_car_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.zhangkaiyue.rxweatherapp.weather.ui.StarItem
+            android:layout_below="@id/skin_item"
+            android:id="@+id/cold_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

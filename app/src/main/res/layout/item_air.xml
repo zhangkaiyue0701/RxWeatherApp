@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardViewBg"
+        >
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_aqi_title"
+            style="@style/CustomNowWeatherTitleTextAppearance"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:background="#705b95"
+            android:drawableLeft="@mipmap/round"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="@string/air_condition" />
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_aqi_text"
+            style="@style/CustomNowWeatherContentTextAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_aqi_title"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/aqi" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_aqi"
+            style="@style/CustomNowWeatherContentTextAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_aqi_text"
+            android:layout_marginLeft="30dp"
+            android:layout_alignBaseline="@id/tv_aqi_text"
+            tools:text="91" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_qlty_text"
+            style="@style/CustomNowWeatherContentTextAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_aqi_text"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/qlty" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_qlty"
+            style="@style/CustomNowWeatherContentTextAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_qlty_text"
+            android:layout_marginLeft="30dp"
+            android:layout_alignBaseline="@id/tv_qlty_text"
+            tools:text="良" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_pm_text"
+            style="@style/CustomNowWeatherContentTextAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_qlty"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/pm" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_pm"
+            style="@style/CustomNowWeatherContentTextAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_pm_text"
+            android:layout_marginLeft="30dp"
+            android:layout_alignBaseline="@id/tv_pm_text"
+            tools:text="良" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:orientation="horizontal">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/life_text"
+        style="@style/CustomNowWeatherContentTextAppearance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:text="@string/skin" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_marginLeft="50dp"
+        android:id="@+id/one_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/shape" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/two_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/shape" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/three_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:src="@mipmap/shape" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/four_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:src="@mipmap/shape" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/five_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/shape" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/skin_text"
+        style="@style/CustomNowWeatherContentTextAppearance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        tools:text="较冷" />
+
+</android.support.v7.widget.LinearLayoutCompat>

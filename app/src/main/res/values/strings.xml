@@ -9,4 +9,23 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!--实时天气-->
+    <string name="air_condition">空气指数</string>
+    <string name="aqi">空气质量指数</string>
+    <string name="qlty">空气质量类别</string>
+    <string name="pm">PM2.5 1小时平均值(ug/m³)</string>
+    <string name="wind_condition">风力状况</string>
+    <string name="wind_sc">风力</string>
+    <string name="wind_dir">风向</string>
+    <string name="wind_spd">风速</string>
+    <string name="life_condition">生活指数</string>
+    <string name="clothes">穿衣指数</string>
+    <string name="sports">运动指数</string>
+    <string name="wash_cars">洗车指数</string>
+    <string name="cold">感冒指数</string>
+    <string name="comfortable">舒适指数</string>
+    <string name="travel">旅行指数</string>
+    <string name="skin">护肤指数</string>
 </resources>

@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#181818</color>
     <color name="colorAccent">#FF4081</color>
     <color name="windowBackground">#252628</color>
+    <color name="cardViewBg">#282b30</color>
 
     <color name="white">#ffffff</color>
 
