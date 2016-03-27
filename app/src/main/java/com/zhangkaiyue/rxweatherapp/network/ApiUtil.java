@@ -1,6 +1,7 @@
 package com.zhangkaiyue.rxweatherapp.network;
 
 import com.zhangkaiyue.rxweatherapp.Constants;
+import com.zhangkaiyue.rxweatherapp.entity.CityEntity;
 import com.zhangkaiyue.rxweatherapp.entity.WeatherEntity;
 
 import java.util.concurrent.TimeUnit;
@@ -46,6 +47,13 @@ public class ApiUtil {
 
     public void getWeather(Subscriber<WeatherEntity> subscriber, String cityId) {
         api.getWeather(cityId, Constants.KEY)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void getCity(Subscriber<CityEntity> subscriber, String search) {
+        api.getCity(search, Constants.KEY)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);

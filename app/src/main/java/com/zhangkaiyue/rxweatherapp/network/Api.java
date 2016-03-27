@@ -1,5 +1,6 @@
 package com.zhangkaiyue.rxweatherapp.network;
 
+import com.zhangkaiyue.rxweatherapp.entity.CityEntity;
 import com.zhangkaiyue.rxweatherapp.entity.WeatherEntity;
 
 
@@ -15,4 +16,7 @@ public interface Api {
 
     @GET("weather")
     Observable<WeatherEntity> getWeather(@Query("cityid") String cityid, @Query("key") String key);
+
+    @GET("citylist")
+    Observable<CityEntity> getCity(@Query("search") String search, @Query("key") String key);
 }

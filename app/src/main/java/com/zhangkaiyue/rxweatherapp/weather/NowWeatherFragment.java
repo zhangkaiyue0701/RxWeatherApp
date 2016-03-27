@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import com.zhangkaiyue.rxweatherapp.Constants;
 import com.zhangkaiyue.rxweatherapp.R;
+import com.zhangkaiyue.rxweatherapp.RxApplication;
+import com.zhangkaiyue.rxweatherapp.db.RealmHelper;
 import com.zhangkaiyue.rxweatherapp.entity.WeatherEntity;
 import com.zhangkaiyue.rxweatherapp.network.Api;
 import com.zhangkaiyue.rxweatherapp.network.ApiUtil;
@@ -53,7 +55,9 @@ public class NowWeatherFragment extends Fragment {
         adapter = new NowWeatherAdapter();
         rvNowWeather.setAdapter(adapter);
         rvNowWeather.setLayoutManager(layoutManager);
-        getWeather("CN101070201");
+        if (RxApplication.location.endsWith("区")) {
+            getWeather(RealmHelper.getCityId(RxApplication.location.substring(0, RxApplication.location.length() - 1), getActivity()));
+        }
         return view;
     }
 
