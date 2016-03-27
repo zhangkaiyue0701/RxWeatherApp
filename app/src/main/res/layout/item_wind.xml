@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="15dp"
+    android:layout_margin="5dp"
     android:background="@color/cardViewBg"
     app:cardCornerRadius="0dp"
     app:cardElevation="8dp">
@@ -70,7 +70,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@string/wind_sc" />
+                    android:text="@string/wind_dir" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/tv_wind_dir"
@@ -94,7 +94,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@string/wind_sc" />
+                    android:text="@string/wind_spd" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/tv_wind_spd"

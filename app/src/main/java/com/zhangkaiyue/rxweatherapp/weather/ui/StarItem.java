@@ -2,6 +2,7 @@ package com.zhangkaiyue.rxweatherapp.weather.ui;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatImageView;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -25,6 +26,10 @@ public class StarItem extends LinearLayoutCompat {
     AppCompatImageView fourStar;
     @Bind(R.id.five_star)
     AppCompatImageView fiveStar;
+    @Bind(R.id.tv_level)
+    AppCompatTextView tvLevel;
+    @Bind(R.id.life_text)
+    AppCompatTextView lifeText;
 
     public StarItem(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -46,7 +51,9 @@ public class StarItem extends LinearLayoutCompat {
         ButterKnife.bind(this);
     }
 
-    public void setStars(int number) {
+    public void setStars(String life, int number, String level) {
+        lifeText.setText(life);
+        tvLevel.setText(level);
         if (number <= 4) {
             fiveStar.setVisibility(INVISIBLE);
             if (number <= 3) {
