@@ -27,7 +27,9 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                 fragment.setArguments(bundle);
                 return fragment;
             case 1:
-                return new HourlyWeatherFragment();
+                HourlyWeatherFragment hourlyWeatherFragment = new HourlyWeatherFragment();
+                hourlyWeatherFragment.setArguments(bundle);
+                return hourlyWeatherFragment;
             case 2:
                 return new DailyWeatherFragment();
         }

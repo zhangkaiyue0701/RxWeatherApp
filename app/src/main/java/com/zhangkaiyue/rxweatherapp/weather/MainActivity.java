@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -97,11 +98,11 @@ public class MainActivity extends AppCompatActivity
         Subscriber<WeatherEntity> subscriber = new Subscriber<WeatherEntity>() {
             @Override
             public void onCompleted() {
-
             }
 
             @Override
             public void onError(Throwable e) {
+                Log.e("error", e.toString());
 
             }
 

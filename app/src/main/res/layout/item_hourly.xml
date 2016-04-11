@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="12dp"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        tools:text="01:00" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_point"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="11dp"
+        android:layout_toRightOf="@id/tv_time"
+        android:src="@mipmap/sun" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_line"
+        android:layout_width="wrap_content"
+        android:layout_height="78dp"
+        android:layout_below="@id/iv_point"
+        android:layout_marginLeft="117.5dp"
+        android:layout_marginTop="4dp"
+        android:src="@mipmap/dashed" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="12dp"
+        android:layout_toRightOf="@id/iv_point"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        tools:text="25摄氏度" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_rain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_temperature"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="12dp"
+        android:layout_toRightOf="@id/iv_point"
+        android:alpha="0.5"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        tools:text="降水概率：25%" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_wind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_rain"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="12dp"
+        android:layout_toRightOf="@id/iv_point"
+        android:alpha="0.5"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        tools:text="风力：3～4级" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_wind_dir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_wind"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="12dp"
+        android:layout_toRightOf="@id/iv_point"
+        android:alpha="0.5"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        tools:text="东北风" />
+
+</RelativeLayout>
