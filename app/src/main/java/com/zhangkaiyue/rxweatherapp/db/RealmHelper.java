@@ -29,8 +29,12 @@ public class RealmHelper {
         });
     }
 
-    public static String getCityId(String city, Context context) {
+    public static String getCityId(String district, String city, Context context) {
         Realm realm = RealmHelper.getRealm(context);
-        return realm.where(CityRealmObject.class).equalTo("city", city).findAll().first().getId();
+        if (realm.where(CityRealmObject.class).equalTo("city", district).findAll().size() != 0) {
+            return realm.where(CityRealmObject.class).equalTo("city", district).findAll().first().getId();
+        } else {
+            return realm.where(CityRealmObject.class).equalTo("city", city).findAll().first().getId();
+        }
     }
 }

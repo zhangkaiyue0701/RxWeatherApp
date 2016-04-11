@@ -36,8 +36,9 @@ public class NowWeatherFragment extends Fragment {
     @Bind(R.id.rv_now_weather)
     RecyclerView rvNowWeather;
 
-    NowWeatherAdapter adapter;
-
+    private NowWeatherAdapter adapter;
+    private String district;
+    private String city;
 
     public NowWeatherFragment() {
         // Required empty public constructor
@@ -55,9 +56,14 @@ public class NowWeatherFragment extends Fragment {
         adapter = new NowWeatherAdapter();
         rvNowWeather.setAdapter(adapter);
         rvNowWeather.setLayoutManager(layoutManager);
-        if (RxApplication.location.endsWith("区")) {
-            getWeather(RealmHelper.getCityId(RxApplication.location.substring(0, RxApplication.location.length() - 1), getActivity()));
+        if (RxApplication.district.endsWith("区")) {
+            district = RxApplication.district.substring(0, RxApplication.district.length() - 1);
         }
+        if (RxApplication.city.endsWith("市")){
+            city = RxApplication.city.substring(0, RxApplication.city.length() - 1);
+        }
+        getWeather(RealmHelper.getCityId(district, city, getActivity()));
+
         return view;
     }
 

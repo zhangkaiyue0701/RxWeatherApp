@@ -20,7 +20,8 @@ import rx.Subscriber;
  */
 public class RxApplication extends Application {
     private Context context;
-    public static String location;
+    public static String district;
+    public static String city;
 
     @Override
     public void onCreate() {
@@ -43,7 +44,8 @@ public class RxApplication extends Application {
             public void onLocationChanged(AMapLocation aMapLocation) {
                 if (aMapLocation != null) {
                     if (aMapLocation.getErrorCode() == 0) {
-                        location = aMapLocation.getDistrict();
+                        district = aMapLocation.getDistrict();
+                        city = aMapLocation.getCity();
                     } else {
                         //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
                         Log.e("AmapError","location Error, ErrCode:"
