@@ -48,7 +48,7 @@ public class RxApplication extends Application {
                         city = aMapLocation.getCity();
                     } else {
                         //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
-                        Log.e("AmapError","location Error, ErrCode:"
+                        Log.e("AmapError", "location Error, ErrCode:"
                                 + aMapLocation.getErrorCode() + ", errInfo:"
                                 + aMapLocation.getErrorInfo());
                     }
@@ -56,6 +56,9 @@ public class RxApplication extends Application {
             }
         });
         mLocationClient.startLocation();
+        if (district != null && city != null) {
+            mLocationClient.stopLocation();
+        }
     }
 
     private void initCity() {
@@ -80,6 +83,4 @@ public class RxApplication extends Application {
         };
         ApiUtil.getInstance().getCity(subscriber, "allchina");
     }
-
-
 }

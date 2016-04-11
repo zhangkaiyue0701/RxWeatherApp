@@ -10,16 +10,22 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.zhangkaiyue.rxweatherapp.R;
+import com.zhangkaiyue.rxweatherapp.RxApplication;
 import com.zhangkaiyue.rxweatherapp.addcity.AddCityActivity;
+import com.zhangkaiyue.rxweatherapp.db.RealmHelper;
+import com.zhangkaiyue.rxweatherapp.entity.WeatherEntity;
+import com.zhangkaiyue.rxweatherapp.network.ApiUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import rx.Subscriber;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,8 +42,16 @@ public class MainActivity extends AppCompatActivity
     DrawerLayout drawerLayout;
     @Bind(R.id.view_pager)
     ViewPager viewPager;
+    @Bind(R.id.tv_weather)
+    AppCompatTextView tvWeather;
+    @Bind(R.id.tv_location)
+    AppCompatTextView tvLocation;
+    @Bind(R.id.tv_temperature)
+    AppCompatTextView tvTemperature;
 
     private ViewPagerAdapter viewPagerAdapter;
+    private String district;
+    private String city;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +59,16 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-        initTabLayout();
+        getSupportActionBar().setTitle("");
+        if (RxApplication.district != null && RxApplication.district.endsWith("区")) {
+            district = RxApplication.district.substring(0, RxApplication.district.length() - 1);
+        }
+        if (RxApplication.city != null && RxApplication.city.endsWith("市")) {
+            city = RxApplication.city.substring(0, RxApplication.city.length() - 1);
+        }
+        if (district != null && city != null) {
+            getWeather(RealmHelper.getCityId(district, city, this));
+        }
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,10 +85,35 @@ public class MainActivity extends AppCompatActivity
         navView.setNavigationItemSelectedListener(this);
     }
 
-    public void initTabLayout() {
-        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 3);
+    public void initTabLayout(WeatherEntity.HeWeatherEntity weather) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("weather", weather);
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 3, bundle);
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    private void getWeather(String cityId) {
+        Subscriber<WeatherEntity> subscriber = new Subscriber<WeatherEntity>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(WeatherEntity weatherEntity) {
+                tvWeather.setText(weatherEntity.getHeWeather().get(0).getNow().getCond().getTxt());
+                tvLocation.setText(city + " " + district);
+                tvTemperature.setText(weatherEntity.getHeWeather().get(0).getNow().getTmp() + "℃ ");
+                initTabLayout(weatherEntity.getHeWeather().get(0));
+            }
+        };
+        ApiUtil.getInstance().getWeather(subscriber, cityId);
     }
 
     @Override

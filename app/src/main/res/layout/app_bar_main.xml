@@ -36,6 +36,37 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="52dp"
+                tools:text="多云"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:drawableLeft="@mipmap/location"
+                android:drawablePadding="8dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="102dp"
+                tools:text="北京市 海淀区"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="72sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="130dp"
+                tools:text="-15℃ "/>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -44,7 +75,7 @@
             style="@style/CustomTabLayout"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_gravity="bottom"  />
+            android:layout_gravity="bottom" />
 
     </android.support.design.widget.AppBarLayout>
 

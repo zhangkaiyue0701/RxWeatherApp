@@ -2,12 +2,13 @@ package com.zhangkaiyue.rxweatherapp.entity;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by zhangkaiyue on 3/15/16.
  */
-public class WeatherEntity {
+public class WeatherEntity implements Serializable {
 
     /**
      * aqi : {"city":{"aqi":"77","co":"2","no2":"50","o3":"70","pm10":"102","pm25":"53","qlty":"良","so2":"58"}}
@@ -30,7 +31,7 @@ public class WeatherEntity {
         this.HeWeather = HeWeather;
     }
 
-    public static class HeWeatherEntity {
+    public static class HeWeatherEntity implements Serializable {
         /**
          * city : {"aqi":"77","co":"2","no2":"50","o3":"70","pm10":"102","pm25":"53","qlty":"良","so2":"58"}
          */
@@ -151,7 +152,7 @@ public class WeatherEntity {
             this.hourly_forecast = hourly_forecast;
         }
 
-        public static class AqiEntity {
+        public static class AqiEntity implements Serializable {
             /**
              * aqi : 77
              * co : 2
@@ -173,7 +174,7 @@ public class WeatherEntity {
                 this.city = city;
             }
 
-            public static class CityEntity {
+            public static class CityEntity implements Serializable {
                 private String aqi;
                 private String co;
                 private String no2;
@@ -249,7 +250,7 @@ public class WeatherEntity {
             }
         }
 
-        public static class BasicEntity {
+        public static class BasicEntity implements Serializable {
             private String city;
             private String cnty;
             private String id;
@@ -310,7 +311,7 @@ public class WeatherEntity {
                 this.update = update;
             }
 
-            public static class UpdateEntity {
+            public static class UpdateEntity implements Serializable{
                 private String loc;
                 private String utc;
 
@@ -332,7 +333,7 @@ public class WeatherEntity {
             }
         }
 
-        public static class NowEntity {
+        public static class NowEntity implements Serializable {
             /**
              * code : 100
              * txt : 晴
@@ -418,7 +419,7 @@ public class WeatherEntity {
                 this.wind = wind;
             }
 
-            public static class CondEntity {
+            public static class CondEntity implements Serializable {
                 private String code;
                 private String txt;
 
@@ -439,7 +440,7 @@ public class WeatherEntity {
                 }
             }
 
-            public static class WindEntity {
+            public static class WindEntity implements Serializable {
                 private String deg;
                 private String dir;
                 private String sc;
@@ -479,7 +480,7 @@ public class WeatherEntity {
             }
         }
 
-        public static class SuggestionEntity {
+        public static class SuggestionEntity implements Serializable {
             /**
              * brf : 舒适
              * txt : 白天不太热也不太冷，风力不大，相信您在这样的天气条件下，应会感到比较清爽和舒适。
@@ -579,7 +580,7 @@ public class WeatherEntity {
                 this.uv = uv;
             }
 
-            public static class ComfEntity {
+            public static class ComfEntity implements Serializable {
                 private String brf;
                 private String txt;
 
@@ -600,7 +601,7 @@ public class WeatherEntity {
                 }
             }
 
-            public static class CwEntity {
+            public static class CwEntity implements Serializable {
                 private String brf;
                 private String txt;
 
@@ -621,7 +622,7 @@ public class WeatherEntity {
                 }
             }
 
-            public static class DrsgEntity {
+            public static class DrsgEntity implements Serializable {
                 private String brf;
                 private String txt;
 
@@ -642,7 +643,7 @@ public class WeatherEntity {
                 }
             }
 
-            public static class FluEntity {
+            public static class FluEntity implements Serializable {
                 private String brf;
                 private String txt;
 
@@ -663,7 +664,7 @@ public class WeatherEntity {
                 }
             }
 
-            public static class SportEntity {
+            public static class SportEntity implements Serializable {
                 private String brf;
                 private String txt;
 
@@ -684,7 +685,7 @@ public class WeatherEntity {
                 }
             }
 
-            public static class TravEntity {
+            public static class TravEntity implements Serializable {
                 private String brf;
                 private String txt;
 
@@ -705,7 +706,7 @@ public class WeatherEntity {
                 }
             }
 
-            public static class UvEntity {
+            public static class UvEntity implements Serializable {
                 private String brf;
                 private String txt;
 
@@ -727,7 +728,7 @@ public class WeatherEntity {
             }
         }
 
-        public static class DailyForecastEntity {
+        public static class DailyForecastEntity implements Serializable {
             /**
              * sr : 05:45
              * ss : 18:12
@@ -843,7 +844,7 @@ public class WeatherEntity {
                 this.wind = wind;
             }
 
-            public static class AstroEntity {
+            public static class AstroEntity implements Serializable {
                 private String sr;
                 private String ss;
 
@@ -864,7 +865,7 @@ public class WeatherEntity {
                 }
             }
 
-            public static class CondEntity {
+            public static class CondEntity implements Serializable {
                 private String code_d;
                 private String code_n;
                 private String txt_d;
@@ -903,7 +904,7 @@ public class WeatherEntity {
                 }
             }
 
-            public static class TmpEntity {
+            public static class TmpEntity implements Serializable {
                 private String max;
                 private String min;
 
@@ -924,7 +925,7 @@ public class WeatherEntity {
                 }
             }
 
-            public static class WindEntity {
+            public static class WindEntity implements Serializable {
                 private String deg;
                 private String dir;
                 private String sc;
@@ -964,7 +965,7 @@ public class WeatherEntity {
             }
         }
 
-        public static class HourlyForecastEntity {
+        public static class HourlyForecastEntity implements Serializable {
             private String date;
             private String hum;
             private String pop;
@@ -1027,7 +1028,7 @@ public class WeatherEntity {
                 this.wind = wind;
             }
 
-            public static class WindEntity {
+            public static class WindEntity implements Serializable {
                 private String deg;
                 private String dir;
                 private String sc;

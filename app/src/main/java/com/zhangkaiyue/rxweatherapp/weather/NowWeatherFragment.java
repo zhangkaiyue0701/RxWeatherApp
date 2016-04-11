@@ -37,8 +37,6 @@ public class NowWeatherFragment extends Fragment {
     RecyclerView rvNowWeather;
 
     private NowWeatherAdapter adapter;
-    private String district;
-    private String city;
 
     public NowWeatherFragment() {
         // Required empty public constructor
@@ -50,42 +48,13 @@ public class NowWeatherFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_now_weather, container, false);
         ButterKnife.bind(this, view);
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         adapter = new NowWeatherAdapter();
         rvNowWeather.setAdapter(adapter);
         rvNowWeather.setLayoutManager(layoutManager);
-        if (RxApplication.district.endsWith("区")) {
-            district = RxApplication.district.substring(0, RxApplication.district.length() - 1);
-        }
-        if (RxApplication.city.endsWith("市")){
-            city = RxApplication.city.substring(0, RxApplication.city.length() - 1);
-        }
-        getWeather(RealmHelper.getCityId(district, city, getActivity()));
-
+        adapter.setData((WeatherEntity.HeWeatherEntity) getArguments().getSerializable("weather"));
         return view;
-    }
-
-
-    private void getWeather(String cityId) {
-        Subscriber<WeatherEntity> subscriber = new Subscriber<WeatherEntity>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(WeatherEntity weatherEntity) {
-                adapter.setData(weatherEntity.getHeWeather().get(0));
-            }
-        };
-        ApiUtil.getInstance().getWeather(subscriber, cityId);
     }
 
     @Override
