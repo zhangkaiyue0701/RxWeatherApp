@@ -5,27 +5,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.zhangkaiyue.rxweatherapp.Constants;
 import com.zhangkaiyue.rxweatherapp.R;
-import com.zhangkaiyue.rxweatherapp.RxApplication;
-import com.zhangkaiyue.rxweatherapp.db.RealmHelper;
 import com.zhangkaiyue.rxweatherapp.entity.WeatherEntity;
-import com.zhangkaiyue.rxweatherapp.network.Api;
-import com.zhangkaiyue.rxweatherapp.network.ApiUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import rx.Subscriber;
 
 /**
  * A simple {@link Fragment} subclass.

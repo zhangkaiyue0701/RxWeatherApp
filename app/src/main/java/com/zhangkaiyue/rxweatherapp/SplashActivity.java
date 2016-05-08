@@ -22,6 +22,6 @@ public class SplashActivity extends AppCompatActivity {
                 //启动主Activity后销毁自身
                 finish();
             }
-        }, 2000);
+        }, 200);
     }
 }

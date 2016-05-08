@@ -44,4 +44,5 @@ dependencies {
     compile 'io.reactivex:rxjava:1.1.1'
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.diogobernardino:williamchart:2.2'
 }

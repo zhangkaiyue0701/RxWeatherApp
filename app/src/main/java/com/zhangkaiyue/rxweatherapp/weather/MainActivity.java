@@ -1,5 +1,6 @@
 package com.zhangkaiyue.rxweatherapp.weather;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,12 +18,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
+import com.google.gson.Gson;
 import com.zhangkaiyue.rxweatherapp.R;
 import com.zhangkaiyue.rxweatherapp.RxApplication;
 import com.zhangkaiyue.rxweatherapp.addcity.AddCityActivity;
-import com.zhangkaiyue.rxweatherapp.db.RealmHelper;
+import com.zhangkaiyue.rxweatherapp.entity.CityEntity;
 import com.zhangkaiyue.rxweatherapp.entity.WeatherEntity;
 import com.zhangkaiyue.rxweatherapp.network.ApiUtil;
+import com.zhangkaiyue.rxweatherapp.utils.FileUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -53,23 +60,18 @@ public class MainActivity extends AppCompatActivity
     private ViewPagerAdapter viewPagerAdapter;
     private String district;
     private String city;
+    private boolean isMunicipality;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        progressDialog = new ProgressDialog(this);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
-        if (RxApplication.district != null && RxApplication.district.endsWith("区")) {
-            district = RxApplication.district.substring(0, RxApplication.district.length() - 1);
-        }
-        if (RxApplication.city != null && RxApplication.city.endsWith("市")) {
-            city = RxApplication.city.substring(0, RxApplication.city.length() - 1);
-        }
-        if (district != null && city != null) {
-            getWeather(RealmHelper.getCityId(district, city, this));
-        }
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        initLocation();
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +110,7 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onNext(WeatherEntity weatherEntity) {
+                progressDialog.dismiss();
                 tvWeather.setText(weatherEntity.getHeWeather().get(0).getNow().getCond().getTxt());
                 tvLocation.setText(city + " " + district);
                 tvTemperature.setText(weatherEntity.getHeWeather().get(0).getNow().getTmp() + "℃ ");
@@ -115,6 +118,56 @@ public class MainActivity extends AppCompatActivity
             }
         };
         ApiUtil.getInstance().getWeather(subscriber, cityId);
+    }
+
+    private void initLocation() {
+        progressDialog.setMessage("正在定位当前位置");
+        progressDialog.show();
+        AMapLocationClient mLocationClient = new AMapLocationClient(getApplicationContext());
+        AMapLocationClientOption mLocationOption = new AMapLocationClientOption();
+        //设置是否允许模拟位置,默认为false，不允许模拟位置
+        mLocationOption.setMockEnable(false);
+        //设置定位间隔,单位毫秒,默认为2000ms
+        mLocationOption.setInterval(200000);
+        mLocationClient.setLocationOption(mLocationOption);
+        mLocationClient.setLocationListener(new AMapLocationListener() {
+            @Override
+            public void onLocationChanged(AMapLocation aMapLocation) {
+                if (aMapLocation != null) {
+                    if (aMapLocation.getErrorCode() == 0) {
+                        district = aMapLocation.getDistrict();
+                        city = aMapLocation.getCity();
+                        if (district != null && district.endsWith("区")) {
+                            district = district.substring(0, district.length() - 1);
+                        }
+                        if (city != null && city.endsWith("市")) {
+                            city = city.substring(0, city.length() - 1);
+                        }
+                        if (district != null && city != null) {
+                            String json = FileUtil.readAssets(MainActivity.this, "city.json");
+                            CityEntity cityEntity = (new Gson()).fromJson(json, CityEntity.class);
+                            if (cityEntity != null) {
+                                for (int i = 0; i < cityEntity.getCity_info().size(); i++) {
+                                    if (cityEntity.getCity_info().get(i).getCity().equals(city)) {
+                                        getWeather(cityEntity.getCity_info().get(i).getId());
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
+                        Log.e("AmapError", "location Error, ErrCode:"
+                                + aMapLocation.getErrorCode() + ", errInfo:"
+                                + aMapLocation.getErrorInfo());
+                    }
+                }
+            }
+        });
+        mLocationClient.startLocation();
+        if (district != null && city != null) {
+            mLocationClient.stopLocation();
+        }
     }
 
     @Override
